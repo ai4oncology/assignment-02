@@ -1,23 +1,27 @@
-# ML for Health 2026 — Assignment Template
+# Assignment 02 - Model Explanations with LIME and SHAP
 
-## Overview
+**ML4Health 2026**
 
-This repository is the template for assignments in the **ML for Health 2026** course.
-Each week a new assignment will be released. You will receive a link via ILIAS to accept it.
+This assignment introduces two complementary explanation methods:
+
+1. **LIME for NLP** - local explanations for a text classifier trained on
+   `movie_sentiment_200.csv`.
+2. **SHAP for tabular data** - global and local explanations on the
+   **Breast Cancer Wisconsin** dataset from scikit-learn.
+3. **Pen and paper exercises** - to be added later.
+
+The structure matches `assignment-01`: one notebook drives the assignment, and
+the implementation work lives in separate Python modules.
 
 ---
 
 ## Prerequisites
 
-You will need the following installed on your machine:
+- **git** - `git --version`
+- **GitHub account** with access to the assignment
+- **miniconda** recommended for environment management
 
-- **git** — check with `git --version`
-- **GitHub account** — required to access and submit assignments
-- **miniconda** — recommended for managing Python environments
-
-## Setting Up Your Environment
-
-Create a dedicated conda environment for this course:
+## 1. Set up your environment
 
 ```bash
 conda create -n ml4health python=3.11
@@ -25,64 +29,60 @@ conda activate ml4health
 pip install -r requirements.txt
 ```
 
----
+## 2. Open the notebook
 
-## Accepting and Working on an Assignment
+```bash
+marimo edit notebook.py
+```
 
-1. Open the assignment link posted on **ILIAS** each week
-2. On first use, link your GitHub account to your **university ID** from the provided list
-3. A personal repository `<assignment-name>-<your-github-username>` will be created for you
-4. Clone it locally:
-   ```bash
-   git clone git@github.com:ml4health-2026/<assignment-name>-<your-github-username>.git
-   ```
-5. Activate your environment and install dependencies:
-   ```bash
-   conda activate ml4health
-   pip install -r requirements.txt
-   ```
-6. Open `assignment.py` and complete the `TODO` sections
+Run cells from top to bottom.
 
----
+## 3. Implement the TODOs
 
-## Testing Your Solution Locally
+As you reach each section, fill in the functions marked `TODO`:
 
-Run the test suite locally before submitting:
+- **Section A** -> [`lime_exercise.py`](lime_exercise.py)
+- **Section B** -> [`shap_exercise.py`](shap_exercise.py)
+
+Do not change function signatures. The tests import these functions directly.
+
+## 4. Self-check before submitting
+
+Run the local test suite:
 
 ```bash
 pytest tests/ -v
 ```
 
-Fix any failing tests before pushing.
+Because this repository is an assignment template, tests will fail until you
+implement the missing functions.
 
----
+## 5. Submit
 
-## Submitting
-
-Push to the `main` branch to submit:
+Push to `main` when you are ready:
 
 ```bash
-git add assignment.py experiences.md
-git commit -m "Submit assignment"
+git add -A
+git commit -m "final submission"
 git push origin main
 ```
 
-Pushing to `main` triggers an automated test run via GitHub Actions.
-**Only push to `main` when you are ready for final submission.**
-For saving work-in-progress remotely, create a separate branch.
+## Project layout
 
-**Deadline:** Tuesday, 5 May 2026, end of day.
+```text
+.
+|-- notebook.py              # single marimo notebook
+|-- lime_exercise.py         # Section A: text classification + LIME
+|-- shap_exercise.py         # Section B: breast-cancer classification + SHAP
+|-- tests/
+|   `-- test_assignment.py   # local + autograder tests
+|-- requirements.txt
+|-- experiences.md
+`-- __init__.py
+```
 
----
+## Feedback and help
 
-## Feedback
-
-For each assignment, a pull request on a `feedback` branch will be created automatically.
-Your instructors will leave inline comments there. **Do not merge this pull request.**
-
----
-
-## Reporting Issues
-
-If you could not solve part of the exercise, describe the problem in `experiences.md`.
-General questions should be posted to the course forum on **ILIAS**.
+If you could not solve part of the exercise, describe what you tried in
+[`experiences.md`](experiences.md). General questions go to the course forum on
+ILIAS.
