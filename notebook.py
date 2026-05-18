@@ -152,8 +152,8 @@ def _(build_demo_corpus):
 def _(mo):
     mo.md(
         r"""
-        The LIME section uses the local movie-review dataset
-        `movie_sentiment_200.csv`, with columns `text` and `label`.
+        The LIME section uses the local pathology-text dataset
+        `medical_pathology_200.csv`, with columns `text` and `label`.
         The goal here is not benchmark performance; it is to inspect how a
         text model justifies one decision.
         """

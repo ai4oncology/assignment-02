@@ -33,14 +33,14 @@ def set_seed(seed: int = 42) -> None:
     np.random.seed(seed)
 
 
-LIME_CLASS_NAMES: list[str] = ["negative", "positive"]
-DEFAULT_MOVIE_DATASET = Path(__file__).with_name("movie_sentiment_200.csv")
+LIME_CLASS_NAMES: list[str] = ["benign", "malignant"]
+DEFAULT_MOVIE_DATASET = Path(__file__).with_name("medical_pathology_200.csv")
 
 
 def build_demo_corpus() -> pd.DataFrame:
     """Return the labelled text dataset for the LIME exercise.
 
-    The preferred source is the local `movie_sentiment_200.csv` file provided
+    The preferred source is the local `medical_pathology_200.csv` file provided
     with the assignment. A tiny in-code fallback is kept so the scaffold still
     has a defined shape if that file is absent.
 
@@ -48,8 +48,8 @@ def build_demo_corpus() -> pd.DataFrame:
     -------
     pandas.DataFrame
         DataFrame with columns:
-        - `text`: movie review text
-        - `label`: integer label (`0=negative`, `1=positive`)
+        - `text`: pathology report text
+        - `label`: integer label (`0=benign`, `1=malignant`)
     """
     if DEFAULT_MOVIE_DATASET.exists():
         df = pd.read_csv(DEFAULT_MOVIE_DATASET)

@@ -5,7 +5,7 @@
 This assignment introduces two complementary explanation methods:
 
 1. **LIME for NLP** - local explanations for a text classifier trained on
-   `movie_sentiment_200.csv`.
+   `medical_pathology_200.csv`.
 2. **SHAP for tabular data** - global and local explanations on the
    **Breast Cancer Wisconsin** dataset from scikit-learn.
 3. **Pen and paper exercises** - week 4 and week 5 xAI foundations.
@@ -81,7 +81,7 @@ git push origin main
 |-- notebook.py              # single marimo notebook
 |-- lime_exercise.py         # Section A: text classification + LIME
 |-- shap_exercise.py         # Section B: breast-cancer classification + SHAP
-|-- movie_sentiment_200.csv  # local dataset for Section A
+|-- medical_pathology_200.csv # local dataset for Section A
 |-- submission.json          # auto-saved notebook answers (generated after running)
 |-- tests/
 |   `-- test_assignment.py   # local + autograder tests

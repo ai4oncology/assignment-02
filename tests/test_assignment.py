@@ -27,7 +27,7 @@ def test_build_demo_corpus_shape_and_labels():
     assert list(df.columns) == ["text", "label"]
     assert len(df) >= 12
     assert set(df["label"]) == {0, 1}
-    assert LIME_CLASS_NAMES == ["ham", "spam"]
+    assert LIME_CLASS_NAMES == ["benign", "malignant"]
 
 
 def test_split_corpus_is_not_implemented_yet():
