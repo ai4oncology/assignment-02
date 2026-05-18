@@ -1,0 +1,26 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test caches
+.pytest_cache/
+
+# Packaging artifacts
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.env
+*.env
+.venv/
+venv/
+
+# IDE files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

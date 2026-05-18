@@ -185,10 +185,10 @@ class TestPenAndPaperAnswers:
         assert abs(_require(submission, "Q_PP_SHAP_LACTATE") - 0.245) <= 0.01
 
     def test_q_pp_shap_age(self, submission):
-        assert abs(_require(submission, "Q_PP_SHAP_AGE") - 0.093) <= 0.01
+        assert abs(_require(submission, "Q_PP_SHAP_AGE") - 0.105) <= 0.01
 
     def test_q_pp_shap_map(self, submission):
-        assert abs(_require(submission, "Q_PP_SHAP_MAP") - 0.082) <= 0.01
+        assert abs(_require(submission, "Q_PP_SHAP_MAP") - 0.070) <= 0.01
 
     def test_q_pp_shap_efficiency(self, submission):
         assert abs(_require(submission, "Q_PP_SHAP_EFFICIENCY") - 0.42) <= 0.01
