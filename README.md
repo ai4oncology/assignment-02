@@ -8,7 +8,7 @@ This assignment introduces two complementary explanation methods:
    `movie_sentiment_200.csv`.
 2. **SHAP for tabular data** - global and local explanations on the
    **Breast Cancer Wisconsin** dataset from scikit-learn.
-3. **Pen and paper exercises** - to be added later.
+3. **Pen and paper exercises** - week 4 and week 5 xAI foundations.
 
 The structure matches `assignment-01`: one notebook drives the assignment, and
 the implementation work lives in separate Python modules.
@@ -43,6 +43,9 @@ As you reach each section, fill in the functions marked `TODO`:
 
 - **Section A** -> [`lime_exercise.py`](lime_exercise.py)
 - **Section B** -> [`shap_exercise.py`](shap_exercise.py)
+
+Section C is answered directly in the notebook via radio and number widgets.
+Those answers are auto-saved to `submission.json`.
 
 Do not change function signatures. The tests import these functions directly.
 

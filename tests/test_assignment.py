@@ -1,4 +1,23 @@
+import json
+import pathlib
+
 import pytest
+
+
+class TestNotebookAnswers:
+    def test_submission_complete(self):
+        path = pathlib.Path("submission.json")
+        assert path.exists(), (
+            "submission.json not found -- open notebook.py in marimo, "
+            "fill in the widgets, and the export cell will write the file."
+        )
+        data = json.loads(path.read_text())
+        unanswered = sorted(k for k, v in data.items() if v is None)
+        assert not unanswered, (
+            f"{len(unanswered)} question(s) unanswered in submission.json: "
+            f"{unanswered}. Open the notebook and click through every widget."
+        )
+
 
 def test_build_demo_corpus_shape_and_labels():
     pytest.importorskip("lime")
@@ -61,3 +80,173 @@ def test_explain_one_instance_is_not_implemented_yet():
 
     with pytest.raises(NotImplementedError):
         explain_one_instance(DummyValues(), row_index=0)
+
+
+@pytest.fixture(scope="module")
+def submission():
+    path = pathlib.Path("submission.json")
+    if not path.exists():
+        pytest.skip(
+            "submission.json not found -- open notebook.py in marimo, fill "
+            "in the widgets, and the export cell will write the file."
+        )
+    return json.loads(path.read_text())
+
+
+def _require(submission, key):
+    assert key in submission, f"{key} missing from submission.json"
+    val = submission[key]
+    assert val is not None, (
+        f"{key} is unanswered in submission.json (None). "
+        "Fill in the corresponding widget in the notebook."
+    )
+    return val
+
+
+class TestPenAndPaperAnswers:
+    def test_q_pp_lin_pred(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_PRED") - 8.45) <= 0.05
+
+    def test_q_pp_lin_eff_age(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_EFF_AGE") - 3.25) <= 0.05
+
+    def test_q_pp_lin_eff_comorb(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_EFF_COMORB") - 3.6) <= 0.05
+
+    def test_q_pp_lin_eff_fit(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_EFF_FIT") - (-1.2)) <= 0.05
+
+    def test_q_pp_lin_eff_surg(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_EFF_SURG") - 0.7) <= 0.05
+
+    def test_q_pp_lin_major(self, submission):
+        assert _require(submission, "Q_PP_LIN_MAJOR") == "b"
+
+    def test_q_pp_lin_fit_delta(self, submission):
+        assert abs(_require(submission, "Q_PP_LIN_FIT_DELTA") - (-0.9)) <= 0.05
+
+    def test_q_pp_log_or_bmi(self, submission):
+        assert abs(_require(submission, "Q_PP_LOG_OR_BMI") - 2.226) <= 0.02
+
+    def test_q_pp_log_prob(self, submission):
+        assert abs(_require(submission, "Q_PP_LOG_PROB") - 0.574) <= 0.02
+
+    def test_q_pp_log_bmi_factor(self, submission):
+        assert abs(_require(submission, "Q_PP_LOG_BMI_FACTOR") - 0.449) <= 0.02
+
+    def test_q_pp_lime_a0(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_A0") - 1.00) <= 0.01
+
+    def test_q_pp_lime_a1(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_A1") - 0.61) <= 0.01
+
+    def test_q_pp_lime_a2(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_A2") - 0.61) <= 0.01
+
+    def test_q_pp_lime_a3(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_A3") - 0.37) <= 0.01
+
+    def test_q_pp_lime_b0(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_B0") - 0.85) <= 0.01
+
+    def test_q_pp_lime_b1(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_B1") - 0.60) <= 0.01
+
+    def test_q_pp_lime_b2(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_B2") - 0.55) <= 0.01
+
+    def test_q_pp_lime_b3(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_B3") - 0.20) <= 0.01
+
+    def test_q_pp_lime_hr_present(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_HR_PRESENT") - 0.25) <= 0.02
+
+    def test_q_pp_lime_hr_absent(self, submission):
+        assert abs(_require(submission, "Q_PP_LIME_HR_ABSENT") - 0.35) <= 0.02
+
+    def test_q_pp_lime_limitation(self, submission):
+        assert _require(submission, "Q_PP_LIME_LIMITATION") == "a"
+
+    def test_q_pp_ins_auc(self, submission):
+        assert abs(_require(submission, "Q_PP_INS_AUC") - 0.537) <= 0.01
+
+    def test_q_pp_del_auc(self, submission):
+        assert abs(_require(submission, "Q_PP_DEL_AUC") - 0.31) <= 0.01
+
+    def test_q_pp_insdel_order(self, submission):
+        assert _require(submission, "Q_PP_INSDEL_ORDER") == "a"
+
+    def test_q_pp_shap_lactate(self, submission):
+        assert abs(_require(submission, "Q_PP_SHAP_LACTATE") - 0.245) <= 0.01
+
+    def test_q_pp_shap_age(self, submission):
+        assert abs(_require(submission, "Q_PP_SHAP_AGE") - 0.093) <= 0.01
+
+    def test_q_pp_shap_map(self, submission):
+        assert abs(_require(submission, "Q_PP_SHAP_MAP") - 0.082) <= 0.01
+
+    def test_q_pp_shap_efficiency(self, submission):
+        assert abs(_require(submission, "Q_PP_SHAP_EFFICIENCY") - 0.42) <= 0.01
+
+    def test_q_pp_closed_bmi(self, submission):
+        assert abs(_require(submission, "Q_PP_CLOSED_BMI") - 1.05) <= 0.02
+
+    def test_q_pp_closed_efficiency_holds(self, submission):
+        assert _require(submission, "Q_PP_CLOSED_EFFICIENCY_HOLDS") == "a"
+
+    def test_q_pp_closed_modifiable(self, submission):
+        assert _require(submission, "Q_PP_CLOSED_MODIFIABLE") == "a"
+
+    def test_q_pp_kernel_w1(self, submission):
+        assert abs(_require(submission, "Q_PP_KERNEL_W1") - 0.25) <= 0.01
+
+    def test_q_pp_kernel_w2(self, submission):
+        assert abs(_require(submission, "Q_PP_KERNEL_W2") - 0.125) <= 0.01
+
+    def test_q_pp_kernel_w3(self, submission):
+        assert abs(_require(submission, "Q_PP_KERNEL_W3") - 0.25) <= 0.01
+
+    def test_q_pp_kernel_highest(self, submission):
+        assert _require(submission, "Q_PP_KERNEL_HIGHEST") == "b"
+
+    def test_q_pp_kernel_exclude(self, submission):
+        assert _require(submission, "Q_PP_KERNEL_EXCLUDE") == "a"
+
+    def test_q_pp_kernel_intuition(self, submission):
+        assert _require(submission, "Q_PP_KERNEL_INTUITION") == "a"
+
+    def test_q_pp_gradcam_a1(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_A1") - 0.50) <= 0.02
+
+    def test_q_pp_gradcam_a2(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_A2") - (-0.10)) <= 0.02
+
+    def test_q_pp_gradcam_a3(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_A3") - 0.20) <= 0.02
+
+    def test_q_pp_gradcam_l11(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_L11") - 1.5) <= 0.02
+
+    def test_q_pp_gradcam_l12(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_L12") - 0.0) <= 0.02
+
+    def test_q_pp_gradcam_l21(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_L21") - 0.9) <= 0.02
+
+    def test_q_pp_gradcam_l22(self, submission):
+        assert abs(_require(submission, "Q_PP_GRADCAM_L22") - 1.3) <= 0.02
+
+    def test_q_pp_gradcam_toploc(self, submission):
+        assert _require(submission, "Q_PP_GRADCAM_TOPLOC") == "a"
+
+    def test_q_pp_method_tree(self, submission):
+        assert _require(submission, "Q_PP_METHOD_TREE") == "a"
+
+    def test_q_pp_method_image(self, submission):
+        assert _require(submission, "Q_PP_METHOD_IMAGE") == "b"
+
+    def test_q_pp_method_genes(self, submission):
+        assert _require(submission, "Q_PP_METHOD_GENES") == "b"
+
+    def test_q_pp_method_fairness(self, submission):
+        assert _require(submission, "Q_PP_METHOD_FAIRNESS") == "b"
