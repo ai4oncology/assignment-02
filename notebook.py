@@ -40,7 +40,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        # Assignment-02: Model Explanations with LIME and SHAP
+        # Assignment-02: Model Explanations
         **ML4Health 2026**
 
         ---

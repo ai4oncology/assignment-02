@@ -1,4 +1,4 @@
-# Assignment 02 - Model Explanations with LIME and SHAP
+# Assignment 02 - Model Explanations
 
 **ML4Health 2026**
 
@@ -74,9 +74,15 @@ git push origin main
 
 ```text
 .
+|-- .github/
+|   `-- workflows/
+|       |-- classroom.yml
+|       `-- tests.yml
 |-- notebook.py              # single marimo notebook
 |-- lime_exercise.py         # Section A: text classification + LIME
 |-- shap_exercise.py         # Section B: breast-cancer classification + SHAP
+|-- movie_sentiment_200.csv  # local dataset for Section A
+|-- submission.json          # auto-saved notebook answers (generated after running)
 |-- tests/
 |   `-- test_assignment.py   # local + autograder tests
 |-- requirements.txt
