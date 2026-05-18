@@ -1,12 +1,17 @@
 import json
 import pathlib
+import sys
 
 import pytest
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 
 class TestNotebookAnswers:
     def test_submission_complete(self):
-        path = pathlib.Path("submission.json")
+        path = ROOT / "submission.json"
         assert path.exists(), (
             "submission.json not found -- open notebook.py in marimo, "
             "fill in the widgets, and the export cell will write the file."
@@ -84,7 +89,7 @@ def test_explain_one_instance_is_not_implemented_yet():
 
 @pytest.fixture(scope="module")
 def submission():
-    path = pathlib.Path("submission.json")
+    path = ROOT / "submission.json"
     if not path.exists():
         pytest.skip(
             "submission.json not found -- open notebook.py in marimo, fill "
