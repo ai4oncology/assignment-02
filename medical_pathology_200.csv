@@ -1,201 +1,201 @@
 text,label
-The specimen shows features of carcinoma.,1
-Pathology demonstrates a harmless growth.,0
-Histology reveals a harmless fibroadenoma.,0
-The report demonstrates a noncancerous growth.,0
-Histopathology confirms a benign cyst.,0
-Histology reveals a harmless fibroadenoma.,0
-The report demonstrates a cancerous growth.,1
-The pathology report indicates basal cell carcinoma.,1
-Findings are consistent with invasive melanoma.,1
-Findings are consistent with invasive melanoma.,1
-Histology supports the diagnosis of a nevus.,0
-The pathology findings are reassuring.,0
-The tissue sample confirms a benign tumor.,0
-Histology supports the diagnosis of carcinoma.,1
-The sample contains no evidence of melanoma.,0
-Pathology demonstrates a harmless growth.,0
-The lesion is diagnosed as malignant melanoma.,1
-The pathology findings are reassuring.,0
-The pathology findings are highly suspicious for melanoma.,1
-Microscopic examination confirms malignant cells.,1
-The pathology report excludes carcinoma.,0
-The tumor is confirmed to be malignant.,1
-The pathology report indicates basal cell carcinoma.,1
-The specimen shows no evidence of carcinoma.,0
-The specimen shows no evidence of carcinoma.,0
-The pathology report indicates a benign lesion.,0
-Pathology demonstrates an aggressive malignant tumor.,1
-The pathology findings are reassuring.,0
-The lesion is diagnosed as malignant melanoma.,1
-Microscopy reveals benign tissue changes.,0
-The biopsy reveals a malignant lesion.,1
-The pathology report indicates a benign lesion.,0
-The lesion contains atypical malignant cells.,1
-Histology supports the diagnosis of carcinoma.,1
-The report demonstrates a noncancerous growth.,0
-Results indicate a malignant neoplasm.,1
-Histology reveals invasive squamous cell carcinoma.,1
-The tumor is confirmed to be benign.,0
-The lesion contains atypical malignant cells.,1
-The lesion contains no malignant cells.,0
-Histopathology confirms a benign cyst.,0
+Biopsy confirms high-grade melanoma.,1
+Microscopy shows benign mole.,0
+Microscopy shows dermatofibroma.,0
+Tissue examination identifies benign mole.,0
+Sections show high-grade melanoma.,1
+The lesion is diagnosed as benign adnexal tumor.,0
+Tissue examination identifies granulation tissue.,0
+Histology reveals scar tissue.,0
+Tissue examination identifies wart tissue.,0
+Biopsy demonstrates hemangioma.,0
 Biopsy confirms malignant melanoma.,1
-The pathology findings are highly suspicious for melanoma.,1
-Findings are consistent with a benign mole.,0
-Biopsy demonstrates a benign nevus.,0
-The lesion contains atypical malignant cells.,1
-The lesion is diagnosed as noncancerous.,0
-The specimen shows no evidence of carcinoma.,0
-The report demonstrates a cancerous growth.,1
-The report demonstrates a noncancerous growth.,0
-The lesion is diagnosed as noncancerous.,0
-The tumor is confirmed to be malignant.,1
-Microscopic examination shows no malignancy.,0
-The lesion is diagnosed as noncancerous.,0
-Microscopic examination confirms malignant cells.,1
-Biopsy confirms malignant melanoma.,1
-Histology reveals a harmless fibroadenoma.,0
-The lesion contains no malignant cells.,0
-Histology supports the diagnosis of carcinoma.,1
-Biopsy confirms malignant melanoma.,1
-The pathology report indicates a benign lesion.,0
-The sample contains evidence of melanoma.,1
-Histology supports the diagnosis of a nevus.,0
-Histology supports the diagnosis of a nevus.,0
-The tumor is confirmed to be benign.,0
-The sample contains evidence of melanoma.,1
-The tumor is confirmed to be benign.,0
-The pathology report confirms carcinoma.,1
-Microscopy reveals malignant transformation.,1
-The biopsy reveals a benign lesion.,0
-The specimen shows no evidence of carcinoma.,0
-The pathology report excludes carcinoma.,0
+Findings indicate scar tissue.,0
+The specimen contains high-grade melanoma.,1
+Histology reveals benign nevus.,0
+Tissue examination identifies poorly differentiated carcinoma.,1
+Tissue examination identifies invasive squamous carcinoma.,1
+Morphology supports malignant melanoma.,1
+Tissue examination identifies benign adnexal tumor.,0
+Morphology supports basal cell carcinoma.,1
+Findings indicate high-grade melanoma.,1
+Sections show aggressive carcinoma.,1
+The lesion is diagnosed as benign mole.,0
+Pathology is consistent with invasive melanoma.,1
+Biopsy confirms invasive squamous carcinoma.,1
+Findings indicate compound nevus.,0
+Histology reveals nodular melanoma.,1
+Morphology supports invasive squamous carcinoma.,1
+Biopsy confirms infiltrating adenocarcinoma.,1
+Microscopy shows fibroadenoma.,0
+Tissue examination identifies anaplastic carcinoma.,1
+Microscopy shows benign fibrous lesion.,0
+Pathology is consistent with benign fibrous lesion.,0
+Biopsy confirms anaplastic carcinoma.,1
+The lesion is diagnosed as anaplastic carcinoma.,1
+Tissue examination identifies high-grade sarcoma.,1
+Sections show invasive ductal carcinoma.,1
+The specimen contains benign fibrous lesion.,0
+Microscopy shows hemangioma.,0
+Pathology is consistent with nodular melanoma.,1
+The specimen contains metastatic carcinoma.,1
+Microscopy demonstrates malignant epithelial tumor.,1
+Findings indicate malignant melanoma.,1
+Pathology is consistent with metastatic carcinoma.,1
+Sections show malignant melanoma.,1
+Tissue examination identifies basal cell carcinoma.,1
+The specimen contains benign adnexal tumor.,0
+Histology reveals anaplastic carcinoma.,1
+Microscopy shows benign adnexal tumor.,0
+Morphology supports squamous cell carcinoma.,1
+Microscopy demonstrates invasive melanoma.,1
+Morphology supports malignant neoplasm.,1
+Morphology supports invasive melanoma.,1
+Histology reveals squamous cell carcinoma.,1
+Sections show reactive hyperplasia.,0
+The specimen contains granulation tissue.,0
+Microscopy demonstrates poorly differentiated carcinoma.,1
+Findings indicate invasive squamous carcinoma.,1
+Biopsy demonstrates dermatofibroma.,0
+Findings indicate metastatic carcinoma.,1
+Morphology supports poorly differentiated carcinoma.,1
+Tissue examination identifies malignant melanoma.,1
+Sections show fibroadenoma.,0
+Morphology supports infiltrating adenocarcinoma.,1
+Biopsy demonstrates compound nevus.,0
+Microscopy demonstrates malignant melanoma.,1
+The specimen contains benign melanocytic nevus.,0
+The specimen contains wart tissue.,0
+The lesion is diagnosed as epidermal inclusion cyst.,0
+Microscopy shows benign melanocytic nevus.,0
+The specimen contains benign papilloma.,0
+The lesion is diagnosed as dermal melanoma.,1
+The specimen contains malignant spindle cell tumor.,1
+Tissue examination identifies ulcerated melanoma.,1
+Findings indicate anaplastic carcinoma.,1
+Sections show invasive squamous carcinoma.,1
+Morphology supports malignant spindle cell tumor.,1
+The lesion is diagnosed as poorly differentiated carcinoma.,1
+The lesion is diagnosed as benign cyst.,0
+Tissue examination identifies squamous cell carcinoma.,1
+The lesion is diagnosed as benign melanocytic nevus.,0
+Sections show malignant neoplasm.,1
+Tissue examination identifies malignant epithelial tumor.,1
+The specimen contains invasive squamous carcinoma.,1
+Morphology supports intradermal nevus.,0
+Pathology is consistent with ulcerated melanoma.,1
+The specimen contains benign cyst.,0
+Microscopy shows reactive hyperplasia.,0
+Findings indicate ulcerated melanoma.,1
+Tissue examination identifies solar lentigo.,0
+Histology reveals ulcerated melanoma.,1
+Morphology supports benign adnexal tumor.,0
+Morphology supports reactive hyperplasia.,0
+Findings indicate benign melanocytic nevus.,0
+The specimen contains squamous cell carcinoma.,1
+Sections show epidermal inclusion cyst.,0
+The specimen contains invasive melanoma.,1
+Morphology supports benign fibrous lesion.,0
+Sections show dermatofibroma.,0
+Pathology is consistent with dermatofibroma.,0
+The specimen contains dermal melanoma.,1
+Histology reveals benign adnexal tumor.,0
+Pathology is consistent with granulation tissue.,0
+Findings indicate metastatic melanoma.,1
+Findings indicate benign cyst.,0
+Tissue examination identifies seborrheic keratosis.,0
+The lesion is diagnosed as invasive ductal carcinoma.,1
+The specimen contains benign nevus.,0
+Findings indicate aggressive carcinoma.,1
+The lesion is diagnosed as metastatic carcinoma.,1
+Tissue examination identifies compound nevus.,0
+Histology reveals fibroadenoma.,0
+Tissue examination identifies dermal melanoma.,1
+Sections show ulcerated melanoma.,1
+The specimen contains reactive hyperplasia.,0
+Tissue examination identifies scar tissue.,0
+Morphology supports metastatic carcinoma.,1
+The lesion is diagnosed as invasive squamous carcinoma.,1
+Histology reveals poorly differentiated carcinoma.,1
+Findings indicate basal cell carcinoma.,1
+Morphology supports malignant epithelial tumor.,1
+Sections show compound nevus.,0
+Biopsy demonstrates benign adnexal tumor.,0
+Morphology supports seborrheic keratosis.,0
+Pathology is consistent with hemangioma.,0
+Findings indicate infiltrating adenocarcinoma.,1
+Sections show benign papilloma.,0
+The specimen contains benign mole.,0
+The lesion is diagnosed as hemangioma.,0
+Sections show seborrheic keratosis.,0
+Biopsy demonstrates benign mole.,0
+Microscopy demonstrates invasive ductal carcinoma.,1
+Biopsy demonstrates benign fibrous lesion.,0
+Morphology supports invasive ductal carcinoma.,1
+Microscopy shows compound nevus.,0
+Pathology is consistent with benign papilloma.,0
+Sections show poorly differentiated carcinoma.,1
+Tissue examination identifies dermatofibroma.,0
+Pathology is consistent with invasive ductal carcinoma.,1
+Sections show benign fibrous lesion.,0
+Histology reveals lipoma.,0
+Sections show benign nevus.,0
+The specimen contains infiltrating adenocarcinoma.,1
 The lesion is diagnosed as malignant melanoma.,1
-Findings are consistent with invasive melanoma.,1
-The lesion is diagnosed as noncancerous.,0
-The specimen shows features of carcinoma.,1
-Findings are consistent with a benign mole.,0
-The pathology report confirms carcinoma.,1
-Microscopy reveals malignant transformation.,1
-Histology supports the diagnosis of a nevus.,0
-The lesion is diagnosed as malignant melanoma.,1
-The sample contains no evidence of melanoma.,0
-Results indicate a nonmalignant neoplasm.,0
-The report demonstrates a noncancerous growth.,0
-The pathology report indicates a benign lesion.,0
-The report demonstrates a cancerous growth.,1
-The sample contains evidence of melanoma.,1
-Biopsy demonstrates a benign nevus.,0
-Microscopic examination shows no malignancy.,0
-The tumor is confirmed to be benign.,0
-Microscopic examination confirms malignant cells.,1
-Microscopic examination confirms malignant cells.,1
-The tissue sample confirms a benign tumor.,0
-Biopsy demonstrates a benign nevus.,0
-The tumor is confirmed to be benign.,0
-The lesion contains atypical malignant cells.,1
-Pathology demonstrates an aggressive malignant tumor.,1
-Findings are consistent with a benign mole.,0
-The lesion contains no malignant cells.,0
-Histopathology confirms invasive ductal carcinoma.,1
-Microscopy reveals benign tissue changes.,0
-Findings are consistent with invasive melanoma.,1
-Results indicate a malignant neoplasm.,1
-Microscopic examination shows no malignancy.,0
-The pathology report confirms carcinoma.,1
-The sample contains evidence of melanoma.,1
-Histopathology confirms a benign cyst.,0
-Findings are consistent with a benign mole.,0
-The sample contains no evidence of melanoma.,0
-Microscopy reveals benign tissue changes.,0
-The sample contains no evidence of melanoma.,0
-Biopsy demonstrates a benign nevus.,0
-Microscopy reveals malignant transformation.,1
-The tissue sample confirms skin cancer.,1
-Results indicate a nonmalignant neoplasm.,0
-The sample contains no evidence of melanoma.,0
-Results indicate a nonmalignant neoplasm.,0
-The lesion contains no malignant cells.,0
-Pathology demonstrates a harmless growth.,0
-Histology reveals invasive squamous cell carcinoma.,1
-Histology reveals invasive squamous cell carcinoma.,1
-The biopsy reveals a malignant lesion.,1
-Results indicate a malignant neoplasm.,1
-The pathology report indicates basal cell carcinoma.,1
-Findings are consistent with a benign mole.,0
-The pathology report excludes carcinoma.,0
-Results indicate a malignant neoplasm.,1
-The tissue sample confirms skin cancer.,1
-The report demonstrates a cancerous growth.,1
-The pathology findings are highly suspicious for melanoma.,1
-Microscopy reveals malignant transformation.,1
-Histology reveals invasive squamous cell carcinoma.,1
-The report demonstrates a cancerous growth.,1
-Histology supports the diagnosis of a nevus.,0
-The pathology report excludes carcinoma.,0
-The biopsy reveals a benign lesion.,0
-The lesion is diagnosed as malignant melanoma.,1
-Biopsy demonstrates a benign nevus.,0
-Pathology demonstrates a harmless growth.,0
-Microscopy reveals malignant transformation.,1
-The sample contains evidence of melanoma.,1
-The lesion contains no malignant cells.,0
-The biopsy reveals a malignant lesion.,1
-Results indicate a malignant neoplasm.,1
-The lesion contains atypical malignant cells.,1
-The tumor is confirmed to be malignant.,1
-Histology reveals a harmless fibroadenoma.,0
-Biopsy confirms malignant melanoma.,1
-Histology supports the diagnosis of carcinoma.,1
-Histopathology confirms invasive ductal carcinoma.,1
-The biopsy reveals a benign lesion.,0
-The biopsy reveals a benign lesion.,0
-Histopathology confirms invasive ductal carcinoma.,1
-Pathology demonstrates an aggressive malignant tumor.,1
-The tissue sample confirms skin cancer.,1
-Histopathology confirms invasive ductal carcinoma.,1
-Findings are consistent with invasive melanoma.,1
-The biopsy reveals a malignant lesion.,1
-The pathology report indicates a benign lesion.,0
-The pathology findings are reassuring.,0
-The specimen shows features of carcinoma.,1
-Histology reveals a harmless fibroadenoma.,0
-The pathology report confirms carcinoma.,1
-The tissue sample confirms a benign tumor.,0
-Pathology demonstrates an aggressive malignant tumor.,1
-The lesion is diagnosed as noncancerous.,0
-Biopsy confirms malignant melanoma.,1
-Histology reveals invasive squamous cell carcinoma.,1
-Histopathology confirms invasive ductal carcinoma.,1
-The pathology findings are reassuring.,0
-Microscopy reveals benign tissue changes.,0
-Histology supports the diagnosis of carcinoma.,1
-Pathology demonstrates a harmless growth.,0
-Histopathology confirms a benign cyst.,0
-The specimen shows no evidence of carcinoma.,0
-The pathology findings are highly suspicious for melanoma.,1
-Microscopic examination shows no malignancy.,0
-The biopsy reveals a benign lesion.,0
-Microscopy reveals benign tissue changes.,0
-Results indicate a nonmalignant neoplasm.,0
-The pathology report confirms carcinoma.,1
-The tumor is confirmed to be malignant.,1
-Microscopic examination confirms malignant cells.,1
-Pathology demonstrates an aggressive malignant tumor.,1
-The tissue sample confirms skin cancer.,1
-The tissue sample confirms a benign tumor.,0
-Histopathology confirms a benign cyst.,0
-The pathology report indicates basal cell carcinoma.,1
-The pathology report excludes carcinoma.,0
-The report demonstrates a noncancerous growth.,0
-The specimen shows features of carcinoma.,1
-The tissue sample confirms a benign tumor.,0
-The tumor is confirmed to be malignant.,1
-The biopsy reveals a malignant lesion.,1
-The pathology report indicates basal cell carcinoma.,1
-The pathology findings are highly suspicious for melanoma.,1
-Results indicate a nonmalignant neoplasm.,0
-The specimen shows features of carcinoma.,1
-The tissue sample confirms skin cancer.,1
-Microscopic examination shows no malignancy.,0
+Tissue examination identifies benign nevus.,0
+Tissue examination identifies benign melanocytic nevus.,0
+Microscopy shows seborrheic keratosis.,0
+Sections show metastatic carcinoma.,1
+Pathology is consistent with benign cyst.,0
+Morphology supports compound nevus.,0
+Histology reveals malignant epithelial tumor.,1
+Pathology is consistent with poorly differentiated carcinoma.,1
+The lesion is diagnosed as benign nevus.,0
+Pathology is consistent with scar tissue.,0
+Tissue examination identifies aggressive carcinoma.,1
+Pathology is consistent with epidermal inclusion cyst.,0
+Tissue examination identifies benign cyst.,0
+Findings indicate epidermal inclusion cyst.,0
+Histology reveals aggressive carcinoma.,1
+Findings indicate intradermal nevus.,0
+Tissue examination identifies benign fibrous lesion.,0
+Morphology supports hemangioma.,0
+Histology reveals malignant spindle cell tumor.,1
+Microscopy demonstrates metastatic carcinoma.,1
+Findings indicate dermatofibroma.,0
+The lesion is diagnosed as granulation tissue.,0
+Sections show squamous cell carcinoma.,1
+Tissue examination identifies invasive melanoma.,1
+Findings indicate dermal melanoma.,1
+Pathology is consistent with benign melanocytic nevus.,0
+Biopsy confirms invasive melanoma.,1
+Microscopy shows scar tissue.,0
+Histology reveals metastatic melanoma.,1
+Findings indicate invasive melanoma.,1
+Histology reveals invasive squamous carcinoma.,1
+Findings indicate fibroadenoma.,0
+The lesion is diagnosed as malignant neoplasm.,1
+Pathology is consistent with wart tissue.,0
+The specimen contains dermatofibroma.,0
+Microscopy demonstrates basal cell carcinoma.,1
+Histology reveals invasive melanoma.,1
+Biopsy confirms invasive ductal carcinoma.,1
+Biopsy confirms poorly differentiated carcinoma.,1
+Findings indicate high-grade sarcoma.,1
+The lesion is diagnosed as malignant epithelial tumor.,1
+Findings indicate reactive hyperplasia.,0
+Findings indicate wart tissue.,0
+Pathology is consistent with seborrheic keratosis.,0
+Morphology supports ulcerated melanoma.,1
+Histology reveals benign cyst.,0
+The specimen contains seborrheic keratosis.,0
+Biopsy demonstrates scar tissue.,0
+Morphology supports anaplastic carcinoma.,1
+Biopsy demonstrates fibroadenoma.,0
+Morphology supports nodular melanoma.,1
+The lesion is diagnosed as seborrheic keratosis.,0
+Pathology is consistent with benign mole.,0
+Morphology supports benign mole.,0
+Morphology supports solar lentigo.,0
+Microscopy demonstrates metastatic melanoma.,1
+The specimen contains compound nevus.,0
