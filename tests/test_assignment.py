@@ -8,7 +8,6 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-
 class TestNotebookAnswers:
     def test_submission_complete(self):
         path = ROOT / "submission.json"
@@ -35,31 +34,37 @@ def test_build_demo_corpus_shape_and_labels():
     assert LIME_CLASS_NAMES == ["benign", "malignant"]
 
 
-def test_split_corpus_is_not_implemented_yet():
+def test_split_corpus_returns_stratified_partitions():
     pytest.importorskip("lime")
-    from lime_exercise import split_corpus
+    from lime_exercise import build_demo_corpus, split_corpus
 
-    with pytest.raises(NotImplementedError):
-        split_corpus(build_demo_corpus())
+    X_train, X_test, y_train, y_test = split_corpus(build_demo_corpus(), test_size=0.25, seed=42)
+    assert len(X_train) + len(X_test) == 200
+    assert len(y_train) == len(X_train)
+    assert len(y_test) == len(X_test)
+    assert set(y_train.unique()) == {0, 1}
+    assert set(y_test.unique()) == {0, 1}
 
 
-def test_build_text_pipeline_is_not_implemented_yet():
+def test_build_text_pipeline_returns_pipeline():
     pytest.importorskip("lime")
     from lime_exercise import build_text_pipeline
 
-    with pytest.raises(NotImplementedError):
-        build_text_pipeline()
+    model = build_text_pipeline()
+    assert list(model.named_steps) == ["tfidf", "clf"]
 
 
-def test_load_breast_cancer_dataframe_is_not_implemented_yet():
-    pytest.importorskip("shap_exercise")
+def test_load_breast_cancer_dataframe_shape():
+    pytest.importorskip("shap")
     from shap_exercise import load_breast_cancer_dataframe
 
-    with pytest.raises(NotImplementedError):
-        load_breast_cancer_dataframe()
+    X, y = load_breast_cancer_dataframe()
+    assert X.shape[0] == len(y)
+    assert X.shape[1] == 30
+    assert y.name == "target"
 
 
-def test_mean_absolute_shap_importance_is_not_implemented_yet():
+def test_mean_absolute_shap_importance_2d_values():
     pytest.importorskip("shap")
     from shap_exercise import mean_absolute_shap_importance
 
@@ -69,11 +74,13 @@ def test_mean_absolute_shap_importance_is_not_implemented_yet():
 
             self.values = np.array([[1.0, -2.0], [3.0, 4.0]])
 
-    with pytest.raises(NotImplementedError):
-        mean_absolute_shap_importance(DummyValues(), ["a", "b"])
+    importance = mean_absolute_shap_importance(DummyValues(), ["a", "b"])
+    assert list(importance.index) == ["b", "a"]
+    assert importance["a"] == 2.0
+    assert importance["b"] == 3.0
 
 
-def test_explain_one_instance_is_not_implemented_yet():
+def test_explain_one_instance_3d_values_uses_positive_class():
     pytest.importorskip("shap")
     from shap_exercise import explain_one_instance
 
@@ -81,10 +88,15 @@ def test_explain_one_instance_is_not_implemented_yet():
         def __init__(self):
             import numpy as np
 
-            self.values = np.array([[1.0, -2.0], [3.0, 4.0]])
+            self.values = np.array(
+                [
+                    [[1.0, 10.0], [2.0, 20.0]],
+                    [[3.0, 30.0], [4.0, 40.0]],
+                ]
+            )
 
-    with pytest.raises(NotImplementedError):
-        explain_one_instance(DummyValues(), row_index=0)
+    explanation = explain_one_instance(DummyValues(), row_index=0)
+    assert explanation.tolist() == [10.0, 20.0]
 
 
 @pytest.fixture(scope="module")
