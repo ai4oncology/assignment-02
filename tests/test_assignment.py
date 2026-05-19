@@ -38,8 +38,9 @@ def test_split_corpus_returns_stratified_partitions():
     pytest.importorskip("lime")
     from lime_exercise import build_demo_corpus, split_corpus
 
-    X_train, X_test, y_train, y_test = split_corpus(build_demo_corpus(), test_size=0.25, seed=42)
-    assert len(X_train) + len(X_test) == 200
+    df = build_demo_corpus()
+    X_train, X_test, y_train, y_test = split_corpus(df, test_size=0.25, seed=42)
+    assert len(X_train) + len(X_test) == len(df)
     assert len(y_train) == len(X_train)
     assert len(y_test) == len(X_test)
     assert set(y_train.unique()) == {0, 1}
@@ -52,6 +53,131 @@ def test_build_text_pipeline_returns_pipeline():
 
     model = build_text_pipeline()
     assert list(model.named_steps) == ["tfidf", "clf"]
+    assert model.named_steps["tfidf"].lowercase is True
+    assert model.named_steps["tfidf"].stop_words == "english"
+    assert model.named_steps["clf"].max_iter == 1000
+    assert model.named_steps["clf"].random_state == 42
+
+
+def test_fit_text_pipeline_returns_fitted_model():
+    pytest.importorskip("lime")
+    from lime_exercise import build_demo_corpus, build_text_pipeline, fit_text_pipeline, split_corpus
+
+    X_train, _, y_train, _ = split_corpus(build_demo_corpus(), test_size=0.25, seed=42)
+    model = build_text_pipeline(seed=42)
+
+    fitted = fit_text_pipeline(model, X_train, y_train)
+
+    assert fitted is model
+    assert hasattr(fitted.named_steps["tfidf"], "vocabulary_")
+    assert hasattr(fitted.named_steps["clf"], "classes_")
+
+
+def test_evaluate_accuracy_rounds_to_4_decimals():
+    pytest.importorskip("lime")
+    from lime_exercise import evaluate_accuracy
+
+    class DummyModel:
+        def predict(self, X):
+            return [0, 1, 1]
+
+    accuracy = evaluate_accuracy(DummyModel(), ["a", "b", "c"], [0, 1, 0])
+    assert accuracy == 0.6667
+
+
+def test_explain_text_prediction_returns_list_for_predicted_class():
+    pytest.importorskip("lime")
+    from lime_exercise import explain_text_prediction
+
+    class DummyExplanation:
+        def as_list(self, label):
+            assert label == 1
+            return [("malignant", 0.8), ("cells", 0.3)]
+
+    class DummyExplainer:
+        def __init__(self, class_names):
+            assert class_names == ["benign", "malignant"]
+
+        def explain_instance(self, text_instance, classifier_fn, num_features):
+            assert text_instance == "suspicious malignant cells"
+            assert num_features == 4
+            probs = classifier_fn([text_instance])
+            assert probs == [[0.1, 0.9]]
+            return DummyExplanation()
+
+    class DummyModel:
+        def predict_proba(self, texts):
+            assert texts == ["suspicious malignant cells"]
+            return [[0.1, 0.9]]
+
+        def predict(self, texts):
+            assert texts == ["suspicious malignant cells"]
+            return [1]
+
+    monkeypatch = pytest.MonkeyPatch()
+    monkeypatch.setattr("lime_exercise.LimeTextExplainer", DummyExplainer)
+    try:
+        explanation = explain_text_prediction(
+            DummyModel(),
+            "suspicious malignant cells",
+            class_names=["benign", "malignant"],
+            num_features=4,
+        )
+    finally:
+        monkeypatch.undo()
+
+    assert explanation == [("malignant", 0.8), ("cells", 0.3)]
+
+
+def test_top_supporting_words_keeps_positive_weights_in_descending_order():
+    pytest.importorskip("lime")
+    from lime_exercise import top_supporting_words
+
+    explanation = [("necrosis", -0.2), ("malignant", 0.8), ("cells", 0.3), ("benign", 0.0)]
+    assert top_supporting_words(explanation) == ["malignant", "cells"]
+
+
+def test_text_pipeline_accuracy_exceeds_0_9():
+    pytest.importorskip("lime")
+    from lime_exercise import (
+        build_demo_corpus,
+        build_text_pipeline,
+        evaluate_accuracy,
+        fit_text_pipeline,
+        split_corpus,
+    )
+
+    df = build_demo_corpus()
+    X_train, X_test, y_train, y_test = split_corpus(df, test_size=0.25, seed=42)
+    model = build_text_pipeline(seed=42)
+    model = fit_text_pipeline(model, X_train, y_train)
+
+    accuracy = evaluate_accuracy(model, X_test, y_test)
+    assert accuracy > 0.9
+
+
+def test_biopsy_carcinoma_receives_highest_lime_score():
+    pytest.importorskip("lime")
+    from lime_exercise import (
+        build_demo_corpus,
+        build_text_pipeline,
+        explain_text_prediction,
+        fit_text_pipeline,
+        split_corpus,
+    )
+
+    df = build_demo_corpus()
+    X_train, _, y_train, _ = split_corpus(df, test_size=0.25, seed=42)
+    model = build_text_pipeline(seed=42)
+    model = fit_text_pipeline(model, X_train, y_train)
+
+    explanation = explain_text_prediction(
+        model,
+        "Biopsy confirms anaplastic carcinoma.",
+        num_features=6,
+    )
+    top_feature, _ = max(explanation, key=lambda item: item[1])
+    assert top_feature == "carcinoma"
 
 
 def test_load_breast_cancer_dataframe_shape():
@@ -80,6 +206,111 @@ def test_mean_absolute_shap_importance_2d_values():
     assert importance["b"] == 3.0
 
 
+def test_split_dataset_returns_stratified_partitions():
+    pytest.importorskip("shap")
+    from shap_exercise import load_breast_cancer_dataframe, split_dataset
+
+    X, y = load_breast_cancer_dataframe()
+    X_train, X_test, y_train, y_test = split_dataset(X, y, test_size=0.2, seed=42)
+    assert len(X_train) + len(X_test) == len(X)
+    assert len(y_train) == len(X_train)
+    assert len(y_test) == len(X_test)
+    assert set(y_train.unique()) == {0, 1}
+    assert set(y_test.unique()) == {0, 1}
+
+
+def test_train_random_forest_returns_fitted_estimator():
+    pytest.importorskip("shap")
+    from shap_exercise import load_breast_cancer_dataframe, split_dataset, train_random_forest
+
+    X, y = load_breast_cancer_dataframe()
+    X_train, _, y_train, _ = split_dataset(X, y, test_size=0.2, seed=42)
+    model = train_random_forest(X_train, y_train, seed=42)
+
+    assert model.n_estimators == 200
+    assert model.random_state == 42
+    assert hasattr(model, "classes_")
+
+
+def test_evaluate_model_rounds_to_4_decimals():
+    pytest.importorskip("shap")
+    from shap_exercise import evaluate_model
+
+    class DummyModel:
+        def predict(self, X):
+            return [1, 0, 1]
+
+    accuracy = evaluate_model(DummyModel(), [[1], [2], [3]], [1, 1, 1])
+    assert accuracy == 0.6667
+
+
+def test_make_tree_explainer_returns_tree_explainer():
+    pytest.importorskip("shap")
+    from shap_exercise import load_breast_cancer_dataframe, split_dataset, train_random_forest, make_tree_explainer
+
+    X, y = load_breast_cancer_dataframe()
+    X_train, _, y_train, _ = split_dataset(X, y, test_size=0.2, seed=42)
+    model = train_random_forest(X_train, y_train, seed=42)
+    explainer = make_tree_explainer(model)
+
+    import shap
+
+    assert isinstance(explainer, shap.TreeExplainer)
+
+
+def test_compute_shap_values_returns_values_object():
+    pytest.importorskip("shap")
+    from shap_exercise import (
+        compute_shap_values,
+        load_breast_cancer_dataframe,
+        make_tree_explainer,
+        split_dataset,
+        train_random_forest,
+    )
+
+    X, y = load_breast_cancer_dataframe()
+    X_train, X_test, y_train, _ = split_dataset(X, y, test_size=0.2, seed=42)
+    model = train_random_forest(X_train, y_train, seed=42)
+    explainer = make_tree_explainer(model)
+    shap_values = compute_shap_values(explainer, X_test.head(5))
+
+    assert hasattr(shap_values, "values")
+    assert shap_values.values.shape[0] == 5
+
+
+def test_random_forest_accuracy_exceeds_0_9():
+    pytest.importorskip("shap")
+    from shap_exercise import evaluate_model, load_breast_cancer_dataframe, split_dataset, train_random_forest
+
+    X, y = load_breast_cancer_dataframe()
+    X_train, X_test, y_train, y_test = split_dataset(X, y, test_size=0.2, seed=42)
+    model = train_random_forest(X_train, y_train, seed=42)
+
+    accuracy = evaluate_model(model, X_test, y_test)
+    assert accuracy > 0.9
+
+
+def test_mean_absolute_shap_importance_3d_values_uses_positive_class():
+    pytest.importorskip("shap")
+    from shap_exercise import mean_absolute_shap_importance
+
+    class DummyValues:
+        def __init__(self):
+            import numpy as np
+
+            self.values = np.array(
+                [
+                    [[1.0, 10.0], [2.0, 20.0]],
+                    [[3.0, 30.0], [4.0, 40.0]],
+                ]
+            )
+
+    importance = mean_absolute_shap_importance(DummyValues(), ["a", "b"])
+    assert list(importance.index) == ["b", "a"]
+    assert importance["a"] == 20.0
+    assert importance["b"] == 30.0
+
+
 def test_explain_one_instance_3d_values_uses_positive_class():
     pytest.importorskip("shap")
     from shap_exercise import explain_one_instance
@@ -97,6 +328,20 @@ def test_explain_one_instance_3d_values_uses_positive_class():
 
     explanation = explain_one_instance(DummyValues(), row_index=0)
     assert explanation.tolist() == [10.0, 20.0]
+
+
+def test_explain_one_instance_2d_values_returns_requested_row():
+    pytest.importorskip("shap")
+    from shap_exercise import explain_one_instance
+
+    class DummyValues:
+        def __init__(self):
+            import numpy as np
+
+            self.values = np.array([[1.0, -2.0], [3.0, 4.0]])
+
+    explanation = explain_one_instance(DummyValues(), row_index=1)
+    assert explanation.tolist() == [3.0, 4.0]
 
 
 @pytest.fixture(scope="module")
