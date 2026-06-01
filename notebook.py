@@ -1152,6 +1152,34 @@ def _(mo):
 def _(mo):
     mo.md(
         r"""
+        The final convolutional layer outputs the following three $2 \times 2$
+        activation maps for the chest X-ray of interest:
+
+        $$
+        A^{(1)} = \begin{pmatrix} 2 & 0 \\ 2 & 2 \end{pmatrix},\quad
+        A^{(2)} = \begin{pmatrix} 1 & 5 \\ 1 & 1 \end{pmatrix},\quad
+        A^{(3)} = \begin{pmatrix} 3 & 0 \\ 0 & 2 \end{pmatrix}.
+        $$
+
+        Back-propagation from the `pneumonia` class score $y^c$ produces the
+        following gradient maps $\partial y^c / \partial A^{(k)}_{uv}$:
+
+        $$
+        \frac{\partial y^c}{\partial A^{(1)}} = \begin{pmatrix} 0.8 & 0.4 \\ 0.6 & 0.2 \end{pmatrix},\quad
+        \frac{\partial y^c}{\partial A^{(2)}} = \begin{pmatrix} 0.0 & -0.2 \\ 0.1 & -0.3 \end{pmatrix},\quad
+        \frac{\partial y^c}{\partial A^{(3)}} = \begin{pmatrix} 0.4 & 0.1 \\ 0.2 & 0.1 \end{pmatrix}.
+        $$
+
+        Use $Z = 4$ (the number of spatial cells in the $2 \times 2$ grid).
+        """
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
         C8(a) Compute the Grad-CAM channel weights.
         """
     )
