@@ -555,12 +555,16 @@ def _(mo):
 
         A black-box sepsis-risk model is probed with 4 perturbations:
 
-        | temp | HR | model output |
-        |---|---|---|
-        | 1 | 1 | 0.85 |
-        | 1 | 0 | 0.60 |
-        | 0 | 1 | 0.55 |
-        | 0 | 0 | 0.20 |
+        | $z'_1$ (temp) | $z'_2$ (HR) | $f(z)$ (model output) | $\pi_x(z)$ (proximity weight) |
+        |---|---|---|---|
+        | 1 | 1 | 0.85 | 1.00 |
+        | 1 | 0 | 0.60 | 0.61 |
+        | 0 | 1 | 0.55 | 0.61 |
+        | 0 | 0 | 0.20 | 0.37 |
+
+        The proximity weights $\pi_x(z) = \exp\!\big(-d(x, z)^2 / \sigma^2\big)$
+        use a Gaussian kernel on the Hamming distance from $x = (1, 1)$, with
+        kernel width $\sigma^2 = 2$.
 
         C3(a) Complete the weighted least-squares LIME objective
 
